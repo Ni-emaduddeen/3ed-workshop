@@ -4,240 +4,316 @@
 <!-- เริ่มต้นเอกสารและกำหนดเป็นภาษาอังกฤษ -->
 
 <head>
-    <!-- ส่วนหัวของเอกสาร เก็บข้อมูล Metadata -->
     <meta charset="UTF-8">
-    <!-- กำหนดการเข้ารหัสให้รองรับภาษาไทย -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ทำให้เว็บไซต์แสดงผลได้ดีบนหน้าจอมือถือ -->
     <meta name="author" content="Ni-emaduddeen Bennisoh">
-    <!-- ระบุชื่อผู้เขียนไฟล์นี้ -->
     <meta name="description" content="Professional CV and Portfolio of Ni-emaduddeen Bennisoh">
-    <!-- คำอธิบายเนื้อหาของหน้าเว็บ -->
     <meta name="keywords" content="CV, Resume, Data Science, IT, Network Design, Portfolio">
-    <!-- คำสำคัญสำหรับการค้นหาผ่าน Search Engine -->
     <title>Ni-emaduddeen - Interactive Resume</title>
-    <!-- ชื่อแท็บที่จะแสดงบนเว็บเบราว์เซอร์ -->
+
+    <!-- ========================================== -->
+    <!-- ส่วนของ CSS สำหรับตกแต่งหน้าเว็บ (อัปเดตของวันนี้) -->
+    <!-- ========================================== -->
+    <style>
+        /* 1. ตั้งค่าเริ่มต้นให้ทุกส่วน (CSS Reset) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 2. ตกแต่งพื้นหลังและรูปแบบตัวอักษรของทั้งหน้าเว็บ */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef; /* สีพื้นหลังสีเทาอ่อน */
+            color: #333333; /* สีตัวอักษรสีเทาเข้ม */
+            line-height: 1.6; /* ระยะห่างระหว่างบรรทัด */
+            padding: 40px 20px; /* ระยะห่างจากขอบจอ */
+        }
+
+        /* 3. สร้างกรอบกระดาษสีขาวสำหรับใส่ Resume (ให้อยู่กึ่งกลางจอ) */
+        .resume-container {
+            max-width: 900px; /* ความกว้างสูงสุด */
+            margin: 0 auto; /* จัดให้อยู่กึ่งกลาง */
+            background-color: #ffffff; /* สีพื้นหลังกระดาษสีขาว */
+            padding: 50px; /* ระยะขอบด้านใน */
+            border-radius: 10px; /* ลบมุมให้โค้งมน */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* ใส่เงาให้ดูมีมิติ */
+        }
+
+        /* 4. ตกแต่งส่วนหัว Header (ชื่อและตำแหน่ง) */
+        header {
+            text-align: center; /* จัดตัวอักษรให้อยู่กึ่งกลาง */
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2c3e50; /* เส้นใต้ขีดหนาสีน้ำเงินเข้ม */
+        }
+
+        header h1 {
+            color: #2c3e50;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+
+        header h2 {
+            color: #7f8c8d;
+            font-weight: 400;
+            font-size: 1.5em;
+        }
+
+        /* 5. ตกแต่งหัวข้อย่อยแต่ละ Section */
+        h3 {
+            color: #2980b9; /* สีข้อความสีฟ้า */
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #dcdde1; /* เส้นใต้บางๆ ใต้หัวข้อ */
+        }
+
+        /* 6. ตกแต่งรายการ (List) */
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* 7. ตกแต่งตาราง (Table) ให้สวยงามอ่านง่าย */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* ลบช่องว่างระหว่างขอบตาราง */
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        th, td {
+            border: 1px solid #dcdde1;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2980b9; /* พื้นหลังหัวตารางสีฟ้า */
+            color: #ffffff; /* ตัวอักษรสีขาว */
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa; /* สลับสีพื้นหลังตารางแถวคู่ให้เป็นสีเทาอ่อน */
+        }
+
+        tr:hover {
+            background-color: #e2eef2; /* เปลี่ยนสีเมื่อเอาเมาส์ชี้ที่ตาราง */
+        }
+
+        /* 8. ตกแต่งแบบฟอร์มติดต่อ (Form) */
+        form {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #dcdde1;
+        }
+
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        input[type="submit"] {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease; /* ทำให้ปุ่มค่อยๆ เปลี่ยนสี */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9; /* เปลี่ยนสีปุ่มเมื่อเอาเมาส์ชี้ */
+        }
+
+        /* 9. ตกแต่งส่วนท้ายกระดาษ (Footer) */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #95a5a6;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- เริ่มต้นส่วนเนื้อหาหลักที่ผู้ใช้จะมองเห็น -->
+    <!-- เพิ่มกล่อง div ครอบเนื้อหาทั้งหมดเพื่อให้ CSS จัดการเป็นหน้ากระดาษ -->
+    <div class="resume-container">
 
-    <header>
-        <!-- ส่วนหัวเรื่องของหน้าเว็บ -->
-        <h1>[Ni-emaduddeen Bennisoh]</h1>
-        <!-- ชื่อและนามสกุล -->
-        <h2>Information Technology Student</h2>
-        <!-- ตำแหน่งหรือสายการเรียน -->
-        <p>
-            Passionate IT student with a strong focus on Data Analytics, Network Design, and System Analysis. 
-            Eager to apply technical skills in real-world technology solutions.
-        </p>
-        <!-- ข้อความเกริ่นนำแนะนำตัว -->
-    </header>
+        <header>
+            <h1>[Ni-emaduddeen Bennisoh]</h1>
+            <h2>Information Technology Student</h2>
+            <p>
+                Passionate IT student with a strong focus on Data Analytics, Network Design, and System Analysis. 
+                Eager to apply technical skills in real-world technology solutions.
+            </p>
+        </header>
 
-    <hr>
-    <!-- เส้นคั่นแนวนอน -->
+        <section>
+            <h3>🎓 Education</h3>
+            <ul>
+                <li>
+                    <strong>Bachelor of Information Technology</strong><br>
+                    <em>Specializing in System Analysis and Data Science</em><br>
+                    <span>Relevant Coursework:</span>
+                    <ul>
+                        <li>Network Infrastructure and OSI Models</li>
+                        <li>Data Processing and Visualization</li>
+                        <li>System Structure Design</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
 
-    <section>
-        <!-- ส่วนประวัติการศึกษา -->
-        <h3>🎓 Education</h3>
-        <ul>
-            <!-- เริ่มต้นรายการประวัติการศึกษา -->
-            <li>
-                <strong>Bachelor of Information Technology</strong>
-                <br>
-                <!-- ขึ้นบรรทัดใหม่ -->
-                <em>Specializing in System Analysis and Data Science</em>
-                <br>
-                <span>Relevant Coursework:</span>
-                <ul>
-                    <!-- รายการย่อยสำหรับวิชาที่เรียน -->
-                    <li>Network Infrastructure and OSI Models</li>
-                    <li>Data Processing and Visualization</li>
-                    <li>System Structure Design</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
+        <section>
+            <h3>📊 Technology Stack Details</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Technology / Tool</th>
+                        <th>Usage Context & Proficiency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data Analysis</td>
+                        <td>Python (Pandas)</td>
+                        <td>Data cleaning, feature engineering, statistical metrics in Google Colab.</td>
+                    </tr>
+                    <tr>
+                        <td>Network Design</td>
+                        <td>Draw.io & OSI Model concepts</td>
+                        <td>Router/switch hardware specifications, network topology mapping.</td>
+                    </tr>
+                    <tr>
+                        <td>Web Development</td>
+                        <td>HTML5 & CSS3</td>
+                        <td>Creating structured, semantic web pages and interactive resumes.</td>
+                    </tr>
+                    <tr>
+                        <td>Hardware & Systems</td>
+                        <td>PC Configuration</td>
+                        <td>Battery management and performance optimization (e.g., Ryzen 7, 16GB RAM).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-    <hr>
+        <section>
+            <h3>📂 Academic & Personal Projects</h3>
+            <ul>
+                <li>
+                    <strong>Global Data Analysis Project</strong>
+                    <ul>
+                        <li>Conducted comprehensive data cleaning on a global monthly dataset using Python.</li>
+                        <li>Transformed raw data into analytical insights and created descriptive visualizations.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>TDS Company Network Design</strong>
+                    <ul>
+                        <li>Designed and documented a complete network infrastructure layout with exact equipment counts.</li>
+                        <li>Created structured diagrams using Draw.io according to project requirements.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>OSI Model Multimedia Presentation</strong>
+                    <ul>
+                        <li>Developed an interactive presentation with AI-generated visual aids and timed audio scripts.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
 
-    <section>
-        <!-- ส่วนทักษะความสามารถทางเทคนิค (อัปเดตใหม่เป็นรูปแบบตาราง) -->
-        <h3>📊 Technology Stack Details</h3>
-        <!-- ใช้แท็ก table เพื่อสร้างตาราง -->
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-                <!-- แท็ก thead สำหรับกำหนดส่วนหัวของตาราง -->
-                <tr>
-                    <!-- แท็ก tr (Table Row) สำหรับสร้างแถว -->
-                    <th>Category</th>
-                    <!-- แท็ก th (Table Header) สำหรับหัวข้อคอลัมน์ -->
-                    <th>Technology / Tool</th>
-                    <th>Usage Context & Proficiency</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- แท็ก tbody สำหรับกำหนดส่วนเนื้อหาของตาราง -->
-                <tr>
-                    <!-- แถวที่ 1 -->
-                    <td>Data Analysis</td>
-                    <!-- แท็ก td (Table Data) สำหรับใส่ข้อมูลในเซลล์ -->
-                    <td>Python (Pandas)</td>
-                    <td>Data cleaning, feature engineering, statistical metrics in Google Colab.</td>
-                </tr>
-                <tr>
-                    <!-- แถวที่ 2 -->
-                    <td>Network Design</td>
-                    <td>Draw.io & OSI Model concepts</td>
-                    <td>Router/switch hardware specifications, network topology mapping.</td>
-                </tr>
-                <tr>
-                    <!-- แถวที่ 3 -->
-                    <td>Web Development</td>
-                    <td>HTML5 & CSS3</td>
-                    <td>Creating structured, semantic web pages and interactive resumes.</td>
-                </tr>
-                <tr>
-                    <!-- แถวที่ 4 -->
-                    <td>Hardware & Systems</td>
-                    <td>PC Configuration</td>
-                    <td>Battery management and performance optimization (e.g., Ryzen 7, 16GB RAM).</td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- ปิดแท็กตาราง -->
-    </section>
+        <section>
+            <h3>🏆 Achievements & Extracurriculars</h3>
+            <ul>
+                <li>
+                    <strong>Competitive Football:</strong>
+                    <p>Secured a 2nd-place finish in a recent local football tournament. Actively engaged in improving physical conditioning and competitive strategies.</p>
+                </li>
+                <li>
+                    <strong>Peer Collaboration Leadership:</strong>
+                    <p>Led task division for group assignments, including system installation and server setup projects with classmates.</p>
+                </li>
+            </ul>
+        </section>
 
-    <hr>
+        <section>
+            <h3>⚽ Hobbies & Interests</h3>
+            <ul>
+                <li>
+                    <strong>Sports Gear Enthusiast:</strong>
+                    <p>Interested in specialized football footwear technology, particularly 100-stud turf shoes for optimal performance on hard ground.</p>
+                </li>
+                <li>
+                    <strong>Cloud Gaming:</strong>
+                    <p>Avid PC gamer leveraging cloud gaming services like GeForce Now to play hardware-intensive titles on portable hardware.</p>
+                </li>
+                <li>
+                    <strong>AI & Digital Art:</strong>
+                    <p>Frequently explore AI image generation for personal device customization and multimedia character designs.</p>
+                </li>
+            </ul>
+        </section>
 
-    <section>
-        <!-- ส่วนประสบการณ์ทำโปรเจกต์เชิงวิชาการ -->
-        <h3>📂 Academic & Personal Projects</h3>
-        <ul>
-            <li>
-                <strong>Global Data Analysis Project</strong>
-                <ul>
-                    <li>Conducted comprehensive data cleaning on a global monthly dataset using Python.</li>
-                    <li>Transformed raw data into analytical insights and created descriptive visualizations.</li>
-                    <li>Utilized Google Colab for collaborative coding and storytelling.</li>
-                </ul>
-            </li>
-            <li>
-                <strong>TDS Company Network Design</strong>
-                <ul>
-                    <li>Designed and documented a complete network infrastructure layout.</li>
-                    <li>Detailed hardware specifications including exact equipment counts for routers, switches, and workstations.</li>
-                    <li>Created structured diagrams using Draw.io according to project requirements.</li>
-                </ul>
-            </li>
-            <li>
-                <strong>OSI Model Multimedia Presentation</strong>
-                <ul>
-                    <li>Developed an interactive presentation for a midterm examination.</li>
-                    <li>Integrated AI-generated visual aids, video editing, and timed audio scripts.</li>
-                    <li>Collaborated with academic peers to divide tasks and coordinate presentation scripts.</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
+        <section>
+            <h3>📞 Contact Information</h3>
+            <ul>
+                <li><strong>Location:</strong> Yala, Thailand</li>
+                <li><strong>Email:</strong> ni-emaduddeen.b@example.com</li>
+                <li><strong>GitHub:</strong> https://github.com/Ni-emaduddeen</li>
+            </ul>
+        </section>
 
-    <hr>
+        <section>
+            <h3>✉️ Send Me a Message</h3>
+            <form action="#" method="POST">
+                <label for="sender-name">Your Name:</label>
+                <input type="text" id="sender-name" name="sender-name" required>
+                
+                <label for="sender-email">Your Email:</label>
+                <input type="email" id="email" name="sender-email" required>
+                
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <input type="submit" value="Send Message">
+            </form>
+        </section>
 
-    <section>
-        <!-- ส่วนผลงานและกิจกรรมนอกห้องเรียน -->
-        <h3>🏆 Achievements & Extracurriculars</h3>
-        <ul>
-            <li>
-                <strong>Competitive Football:</strong>
-                <p>Secured a 2nd-place finish in a recent local football tournament. Actively engaged in improving physical conditioning, stamina, and competitive strategies.</p>
-            </li>
-            <li>
-                <strong>Peer Collaboration Leadership:</strong>
-                <p>Led task division for group assignments, including system installation and server setup projects with classmates.</p>
-            </li>
-        </ul>
-    </section>
+        <footer>
+            <p><em>This resume is continuously updated as part of a Web Development Workshop.</em></p>
+            <p><strong>Last Updated:</strong> August 20, 2026</p>
+        </footer>
 
-    <hr>
+    </div>
+    <!-- ปิดแท็กกล่องกระดาษ resume-container -->
 
-    <section>
-        <!-- ส่วนงานอดิเรกและความสนใจส่วนตัว -->
-        <h3>⚽ Hobbies & Interests</h3>
-        <ul>
-            <li>
-                <strong>Sports Gear Enthusiast:</strong>
-                <p>Interested in specialized football footwear technology, particularly Mizuno Morelia 100-stud turf shoes for optimal performance on hard or sandy ground pitches.</p>
-            </li>
-            <li>
-                <strong>Cloud Gaming & Tech:</strong>
-                <p>Avid PC gamer leveraging cloud gaming services like GeForce Now to play hardware-intensive titles (e.g., Hogwarts Legacy, Assassin's Creed Odyssey, Chivalry 2) on portable hardware setups.</p>
-            </li>
-            <li>
-                <strong>AI & Digital Art:</strong>
-                <p>Frequently explore AI image generation for personal device customization, phone wallpapers, and multimedia character designs.</p>
-            </li>
-        </ul>
-    </section>
-
-    <hr>
-
-    <section>
-        <!-- ส่วนข้อมูลการติดต่อ -->
-        <h3>📞 Contact Information</h3>
-        <ul>
-            <li>
-                <strong>Location:</strong>
-                <span>Yala, Thailand</span>
-            </li>
-            <li>
-                <strong>Email:</strong>
-                <span>ni-emaduddeen.b@example.com</span>
-            </li>
-            <li>
-                <strong>GitHub:</strong>
-                <span>https://github.com/Ni-emaduddeen</span>
-            </li>
-        </ul>
-    </section>
-
-    <hr>
-
-    <section>
-        <!-- ส่วนฟอร์มสำหรับติดต่อ (ส่วนที่เพิ่มใหม่ของวันนี้) -->
-        <h3>✉️ Send Me a Message</h3>
-        <!-- ใช้แท็ก form สำหรับสร้างแบบฟอร์มรับข้อมูล -->
-        <form action="#" method="POST">
-            <!-- แท็ก label ใช้สำหรับบอกว่าช่องกรอกนี้คืออะไร -->
-            <label for="sender-name">Your Name:</label>
-            <br>
-            <!-- แท็ก input แบบ text สำหรับให้ผู้ใช้พิมพ์ข้อความสั้นๆ -->
-            <input type="text" id="sender-name" name="sender-name" required>
-            <br><br>
-
-            <label for="sender-email">Your Email:</label>
-            <br>
-            <!-- แท็ก input แบบ email สำหรับกรอกอีเมล (ระบบจะช่วยตรวจรูปแบบอีเมล) -->
-            <input type="email" id="sender-email" name="sender-email" required>
-            <br><br>
-
-            <label for="message">Your Message:</label>
-            <br>
-            <!-- แท็ก textarea สำหรับกรอกข้อความยาวๆ (หลายบรรทัด) -->
-            <textarea id="message" name="message" rows="4" cols="50" required></textarea>
-            <br><br>
-
-            <!-- แท็ก input แบบ submit เพื่อสร้างปุ่มกดยืนยันการส่งข้อมูล -->
-            <input type="submit" value="Send Message">
-        </form>
-        <!-- ปิดแท็กฟอร์ม -->
-    </section>
-
-    <hr>
-
-
-
-<!-- ปิดแท็กเนื้อหาหลัก -->
 </body>
-<!-- ปิดแท็กเอกสาร HTML -->
 </html>
