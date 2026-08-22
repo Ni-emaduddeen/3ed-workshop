@@ -179,3 +179,45 @@ body {
     font-size: 0.95em;
     line-height: 1.5;
 }
+
+/* --- Skill Progress Bars (อัปเดตของวันนี้) --- */
+.skills-wrapper {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ecf0f1;
+}
+
+.skill-item {
+    margin-bottom: 20px;
+}
+
+.skill-item:last-child {
+    margin-bottom: 0;
+}
+
+/* จัดให้ชื่อภาษาและเปอร์เซ็นต์อยู่แยกซ้าย-ขวา */
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* พื้นหลังของแถบวัดระดับ (สีเทาอ่อน) */
+.progress-bar-bg {
+    width: 100%;
+    background-color: #dcdde1;
+    border-radius: 10px;
+    height: 12px;
+    overflow: hidden;
+}
+
+/* แถบสีที่วิ่งตามความสามารถ (สีฟ้า) */
+.progress-bar-fill {
+    background-color: #2980b9;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+}
