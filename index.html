@@ -7,178 +7,281 @@
     <meta name="description" content="Professional CV and Portfolio of Ni-emaduddeen Bennisoh">
     <title>Ni-emaduddeen - Interactive Resume</title>
     
-    <!-- คำสั่งเชื่อมโยงไปยังไฟล์ CSS ที่เราจะสร้างขึ้นใหม่ -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="resume-container">
-        
-        <!-- ใช้ Class เพื่อให้ CSS เรียกไปตกแต่งได้ง่ายขึ้น -->
-        <header class="resume-header">
-            <h1 class="header-name">[Ni-emaduddeen Bennisoh]</h1>
-            <h2 class="header-title">Information Technology Student</h2>
-            <p class="header-summary">
-                Passionate IT student with a strong focus on Data Analytics, Network Design, and System Analysis. 
-                Eager to apply technical skills in real-world technology solutions.
-            </p>
-        </header>
-
-        <section class="resume-section">
-            <h3 class="section-title">🎓 Education</h3>
-            <ul class="content-list">
-                <li>
-                    <strong class="highlight-text">Bachelor of Information Technology</strong><br>
-                    <em>Specializing in System Analysis and Data Science</em><br>
-                    <span>Relevant Coursework: Network Infrastructure, Data Processing, System Structure Design.</span>
-                </li>
-            </ul>
-        </section>
-
-        <section class="resume-section">
-            <h3 class="section-title">📊 Technology Stack</h3>
-            <table class="tech-table">
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Technology / Tool</th>
-                        <th>Usage Context</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Data Analysis</td>
-                        <td>Python (Pandas)</td>
-                        <td>Data cleaning and storytelling in Google Colab.</td>
-                    </tr>
-                    <tr>
-                        <td>Network Design</td>
-                        <td>Draw.io</td>
-                        <td>Router/switch specifications and topology mapping.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section class="resume-section">
-            <h3 class="section-title">📂 Academic Projects (Multimedia)</h3>
-            <ul class="content-list">
-                <li>
-                    <strong class="highlight-text">OSI Model Multimedia Presentation</strong>
-                    <p>Developed an interactive presentation on the 7-layer OSI model integrating AI-generated visual aids.</p>
-                    
-                    <!-- เพิ่มไฟล์เสียง (Audio) ตามคำสั่งอาจารย์ -->
-                    <div class="media-container">
-                        <p><em>Listen to the presentation audio script:</em></p>
-                        <audio controls class="media-player">
-                            <source src="osi-audio-sample.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
-                </li>
-                <li>
-                    <strong class="highlight-text">TDS Company Network Design</strong>
-                    <p>Designed and documented a complete network infrastructure layout with hardware specifications.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section class="resume-section">
-            <h3 class="section-title">⚽ Hobbies & Interests</h3>
-            <ul class="content-list">
-                <li>
-                    <strong class="highlight-text">Competitive Football</strong>
-                    <p>Secured a 2nd-place finish in a local tournament. Interested in specialized turf shoes and physical conditioning.</p>
-                    
-                    <!-- เพิ่มไฟล์วิดีโอ (Video) ตามคำสั่งอาจารย์ -->
-                    <div class="media-container">
-                        <p><em>Watch my recent tournament highlight:</em></p>
-                        <video controls class="media-player" width="100%" height="auto">
-                            <source src="football-highlight.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </li>
-                <li>
-                    <strong class="highlight-text">Cloud Gaming</strong>
-                    <p>Avid PC gamer using GeForce Now for hardware-intensive titles.</p>
-                </li>
-            </ul>
-        </section>
-<section class="resume-section">
-            <h3 class="section-title">🌟 Soft Skills & Teamwork</h3>
-            <ul class="content-list">
-                <li>
-                    <strong class="highlight-text">Team Collaboration:</strong>
-                    <p>Successfully coordinated with academic peers to divide tasks for system installation and server setup projects.</p>
-                </li>
-                <li>
-                    <strong class="highlight-text">Strategic Planning:</strong>
-                    <p>Applied analytical thinking not only in IT projects but also in competitive football, securing a 2nd-place tournament finish.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section class="resume-section">
-            <h3 class="section-title">⚙️ Hardware & Optimization</h3>
-            <!-- ใช้ Class achievement-card ที่เราจะไปตกแต่งใน CSS -->
-            <div class="achievement-card">
-                <h4>System Configuration</h4>
-                <p>Configured Acer Aspire Lite (Ryzen 7, 16GB RAM) for optimized battery management and peak performance.</p>
-            </div>
-            <div class="achievement-card">
-                <h4>Cloud Environment</h4>
-                <p>Leveraged GeForce Now for running hardware-intensive applications and gaming seamlessly on portable devices.</p>
-            </div>
-        </section>
-
-        <section class="resume-section">
-            <h3 class="section-title">🌍 Language Proficiency</h3>
-            <div class="skills-wrapper">
-                <!-- ทักษะภาษาไทย -->
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Thai (Native)</span>
-                        <span>100%</span>
-                    </div>
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 100%;"></div>
-                    </div>
-                </div>
-                
-                <!-- ทักษะภาษาอังกฤษ -->
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>English (Technical & Conversational)</span>
-                        <span>75%</span>
-                    </div>
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 75%;"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="resume-section">
-            <h3 class="section-title">✉️ Contact & Message</h3>
-            <form action="#" method="POST" class="contact-form">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" name="name" class="form-input" required>
-                
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" id="email" name="email" class="form-input" required>
-                
-                <label for="message" class="form-label">Message:</label>
-                <textarea id="message" name="message" rows="3" class="form-textarea" required></textarea>
-                
-                <input type="submit" value="Send Message" class="btn-submit">
-            </form>
-        </section>
-
-        <footer class="resume-footer">
-            <p><em>Updated as part of the 4th Web Development Workshop.</em></p>
-        </footer>
-
+    <!-- ========================================== -->
+    <!-- Intro Video แบบเต็มจอ (เล่นอัตโนมัติ) -->
+    <!-- ========================================== -->
+    <div id="video-intro">
+        <video id="intro-clip" autoplay muted playsinline>
+            <source src="intro.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
+
+    <!-- ========================================== -->
+    <!-- โครงสร้างหลักของเว็บ (เมนูซ้าย + เนื้อหาขวา) -->
+    <!-- ========================================== -->
+    <div class="page-layout">
+        
+        <!-- แถบเมนูด้านซ้าย -->
+        <nav class="sidebar">
+            <div class="sidebar-profile">
+                <span>👨‍💻</span>
+            </div>
+            <h3 class="sidebar-name">Ni-emaduddeen</h3>
+            
+            <ul class="nav-links">
+                <li><a href="#" class="nav-btn active-btn" onclick="showSection('header', this)">Profile Info</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('education', this)">Education</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('experience', this)">Experience</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('tech-stack', this)">Tech Stack</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('certifications', this)">Certifications</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('projects', this)">Projects</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('hobbies', this)">Hobbies</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('soft-skills', this)">Soft Skills</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('hardware', this)">Hardware</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('languages', this)">Languages</a></li>
+                <li><a href="#" class="nav-btn" onclick="showSection('contact', this)">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- พื้นที่เนื้อหาด้านขวา -->
+        <div class="resume-container">
+            
+            <header id="header" class="resume-header fade-in content-section active">
+                <div class="header-text">
+                    <h1 class="header-name">[Ni-emaduddeen Bennisoh]</h1>
+                    <h2 class="header-title">Information Technology Student</h2>
+                    <p class="header-summary">
+                        Passionate IT student with a strong focus on Data Analytics, Network Design, and System Analysis. 
+                        Eager to apply technical skills in real-world technology solutions.
+                    </p>
+                </div>
+            </header>
+
+            <section id="education" class="resume-section fade-in content-section">
+                <h3 class="section-title">🎓 Education Timeline</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <strong class="highlight-text">Bachelor of Information Technology</strong>
+                            <span class="timeline-date">2023 - Present</span>
+                            <p><em>Specializing in System Analysis and Data Science</em></p>
+                            <p>Relevant Coursework: Network Infrastructure, Data Processing, System Structure Design.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="resume-section fade-in content-section">
+                <h3 class="section-title">💼 Experience & Leadership</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <strong class="highlight-text">Network Infrastructure Lead (Academic Project)</strong>
+                            <span class="timeline-date">Jan 2026 - Present</span>
+                            <p><em>TDS Company Simulation Project</em></p>
+                            <ul class="content-list" style="margin-top: 10px;">
+                                <li>Led a team of students to design a complete enterprise network topology.</li>
+                                <li>Documented hardware specifications including routers, switches, and workstations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <strong class="highlight-text">Data Analytics Assistant (Project-based)</strong>
+                            <span class="timeline-date">Aug 2025 - Dec 2025</span>
+                            <p><em>University Data Processing Lab</em></p>
+                            <ul class="content-list" style="margin-top: 10px;">
+                                <li>Assisted in cleaning and processing a global monthly dataset using Python.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tech-stack" class="resume-section fade-in content-section">
+                <h3 class="section-title">📊 Technology Stack</h3>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Technology / Tool</th>
+                            <th>Usage Context</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data Analysis</td>
+                            <td>Python (Pandas)</td>
+                            <td>Data cleaning and storytelling in Google Colab.</td>
+                        </tr>
+                        <tr>
+                            <td>Network Design</td>
+                            <td>Draw.io</td>
+                            <td>Router/switch specifications and topology mapping.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="certifications" class="resume-section fade-in content-section">
+                <h3 class="section-title">📜 Licenses & Certifications</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-icon">🏆</div>
+                        <div class="project-info">
+                            <h4>Google Data Analytics</h4>
+                            <p>Completed comprehensive training on data cleaning and visualization tools.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">🏅</div>
+                        <div class="project-info">
+                            <h4>Cisco Network Basics</h4>
+                            <p>Studying networking fundamentals and basic router configurations.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="resume-section fade-in content-section">
+                <h3 class="section-title">📂 Academic Projects</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-icon">🌐</div>
+                        <div class="project-info">
+                            <h4>OSI Model Presentation</h4>
+                            <p>Developed an interactive presentation on the 7-layer OSI model.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">🖥️</div>
+                        <div class="project-info">
+                            <h4>TDS Company Network Design</h4>
+                            <p>Designed and documented a complete network infrastructure layout.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="hobbies" class="resume-section fade-in content-section">
+                <h3 class="section-title">⚽ Hobbies & Interests</h3>
+                <div class="hobbies-grid">
+                    <div class="grid-card">
+                        <strong class="highlight-text">Competitive Football</strong>
+                        <p>Secured a 2nd-place finish in a local tournament.</p>
+                        <div class="media-container">
+                            <video controls class="media-player" width="100%" height="auto">
+                                <source src="football-highlight.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="grid-card">
+                        <strong class="highlight-text">Cloud Gaming</strong>
+                        <p>Avid PC gamer using GeForce Now for hardware-intensive titles.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="soft-skills" class="resume-section fade-in content-section">
+                <h3 class="section-title">🌟 Soft Skills & Teamwork</h3>
+                <ul class="content-list">
+                    <li><strong class="highlight-text">Team Collaboration:</strong> Successfully coordinated with academic peers for system installation projects.</li>
+                    <li><strong class="highlight-text">Strategic Planning:</strong> Applied analytical thinking in both IT projects and competitive football.</li>
+                </ul>
+            </section>
+
+            <section id="hardware" class="resume-section fade-in content-section">
+                <h3 class="section-title">⚙️ Hardware & Optimization</h3>
+                <div class="achievement-card">
+                    <h4>System Configuration</h4>
+                    <p>Configured Acer Aspire Lite (Ryzen 7, 16GB RAM) for optimized battery management.</p>
+                </div>
+            </section>
+
+            <section id="languages" class="resume-section fade-in content-section">
+                <h3 class="section-title">🌍 Language Proficiency</h3>
+                <div class="skills-wrapper">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Thai (Native)</span><span>100%</span></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>English</span><span>75%</span></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contact" class="resume-section fade-in content-section">
+                <h3 class="section-title">✉️ Contact & Message</h3>
+                <form action="#" method="POST" class="contact-form">
+                    <div class="form-flex-group">
+                        <div class="form-control">
+                            <label for="name" class="form-label">Name:</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                    </div>
+                    <label for="message" class="form-label">Message:</label>
+                    <textarea id="message" name="message" rows="3" class="form-textarea" required></textarea>
+                    <input type="submit" value="Send Message" class="btn-submit">
+                </form>
+            </section>
+
+        </div> 
+    </div> 
+
+    <!-- ========================================== -->
+    <!-- ระบบ JavaScript (จัดการ Intro และ แท็บเมนู) -->
+    <!-- ========================================== -->
+    <script>
+        // 1. ระบบจัดการ Intro Video
+        window.addEventListener('load', function() {
+            const introContainer = document.getElementById('video-intro');
+            const introVideo = document.getElementById('intro-clip');
+
+            if (introContainer && introVideo) {
+                // เมื่อวิดีโอเล่น "จบ" 
+                introVideo.addEventListener('ended', function() {
+                    introContainer.style.opacity = '0'; 
+                    setTimeout(function() {
+                        introContainer.remove(); 
+                    }, 800); 
+                });
+
+                // ระบบสำรอง: ปิด Intro ทิ้งใน 5 วินาที เผื่อเบราว์เซอร์มีปัญหา
+                setTimeout(function() {
+                    if (document.getElementById('video-intro')) {
+                        introContainer.style.opacity = '0';
+                        setTimeout(() => introContainer.remove(), 800);
+                    }
+                }, 5000); 
+            }
+        });
+
+        // 2. ระบบควบคุมการกดเมนูแท็บด้านซ้าย
+        function showSection(sectionId, clickedElement) {
+            document.querySelectorAll('.content-section').forEach(function(sec) {
+                sec.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(function(btn) {
+                btn.classList.remove('active-btn');
+            });
+            clickedElement.classList.add('active-btn');
+        }
+    </script>
 </body>
 </html>
