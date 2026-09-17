@@ -11,9 +11,7 @@
 </head>
 
 <body>
-    <!-- ========================================== -->
-    <!-- Intro Video แบบเต็มจอ (เล่นอัตโนมัติ) -->
-    <!-- ========================================== -->
+    <!-- Intro Video -->
     <div id="video-intro">
         <video id="intro-clip" autoplay muted playsinline>
             <source src="intro.mp4" type="video/mp4">
@@ -21,9 +19,7 @@
         </video>
     </div>
 
-    <!-- ========================================== -->
-    <!-- โครงสร้างหลักของเว็บ (เมนูซ้าย + เนื้อหาขวา) -->
-    <!-- ========================================== -->
+    <!-- โครงสร้างหลักของเว็บ -->
     <div class="page-layout">
         
         <!-- แถบเมนูด้านซ้าย -->
@@ -46,6 +42,11 @@
                 <li><a href="#" class="nav-btn" onclick="showSection('languages', this)">Languages</a></li>
                 <li><a href="#" class="nav-btn" onclick="showSection('contact', this)">Contact</a></li>
             </ul>
+
+            <!-- เพิ่มส่วนแสดงผลตัวนับคนเข้าชมเว็บ (Visitor Counter) ตรงนี้ -->
+            <div class="visitor-stats">
+                👀 Total Visitors: <span id="visitorCountDisplay">0</span>
+            </div>
         </nav>
 
         <!-- พื้นที่เนื้อหาด้านขวา -->
@@ -222,28 +223,39 @@
             
             <section id="contact" class="resume-section fade-in content-section">
                 <h3 class="section-title">✉️ Contact & Message</h3>
-                <form action="#" method="POST" class="contact-form">
+                
+                <form id="contactForm" action="#" method="POST" class="contact-form">
                     <div class="form-flex-group">
                         <div class="form-control">
                             <label for="name" class="form-label">Name:</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
+                            <input type="text" id="name" name="name" class="form-input" required 
+                                   pattern="^[a-zA-Z\s]+$" 
+                                   title="Please enter English letters and spaces only.">
                         </div>
                         <div class="form-control">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
+                            <input type="email" id="email" name="email" class="form-input" required 
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                                   title="Please enter a valid email address.">
                         </div>
                     </div>
                     <label for="message" class="form-label">Message:</label>
                     <textarea id="message" name="message" rows="3" class="form-textarea" required></textarea>
+                    
                     <input type="submit" value="Send Message" class="btn-submit">
+                    
+                    <div id="formFeedback" style="margin-top: 15px; font-weight: bold;"></div>
                 </form>
             </section>
 
         </div> 
     </div> 
 
+    <!-- ปุ่ม Go to Top (เพิ่มเข้ามาใหม่) -->
+    <button id="goToTopBtn" title="Go to top">⬆️</button>
+
     <!-- ========================================== -->
-    <!-- ระบบ JavaScript (จัดการ Intro และ แท็บเมนู) -->
+    <!-- ระบบ JavaScript (อัปเดตใหม่) -->
     <!-- ========================================== -->
     <script>
         // 1. ระบบจัดการ Intro Video
@@ -252,7 +264,6 @@
             const introVideo = document.getElementById('intro-clip');
 
             if (introContainer && introVideo) {
-                // เมื่อวิดีโอเล่น "จบ" 
                 introVideo.addEventListener('ended', function() {
                     introContainer.style.opacity = '0'; 
                     setTimeout(function() {
@@ -260,7 +271,6 @@
                     }, 800); 
                 });
 
-                // ระบบสำรอง: ปิด Intro ทิ้งใน 5 วินาที เผื่อเบราว์เซอร์มีปัญหา
                 setTimeout(function() {
                     if (document.getElementById('video-intro')) {
                         introContainer.style.opacity = '0';
@@ -282,6 +292,72 @@
             });
             clickedElement.classList.add('active-btn');
         }
+
+        // 3. ระบบจัดการฟอร์มติดต่อ
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            let rawName = document.getElementById('name').value;
+            let rawEmail = document.getElementById('email').value;
+            let rawMessage = document.getElementById('message').value;
+
+            function sanitizeInput(inputStr) {
+                const tempDiv = document.createElement('div');
+                tempDiv.textContent = inputStr;
+                return tempDiv.innerHTML;
+            }
+
+            let cleanName = sanitizeInput(rawName);
+            let cleanEmail = sanitizeInput(rawEmail);
+            let cleanMessage = sanitizeInput(rawMessage);
+
+            const contactData = { name: cleanName, email: cleanEmail, message: cleanMessage };
+            console.log("Sanitized Data Saved:", contactData);
+
+            let feedbackElement = document.getElementById('formFeedback');
+            feedbackElement.style.color = "#28a745"; 
+            feedbackElement.innerHTML = `Thank you, ${contactData.name}! Your message has been safely received.`;
+            document.getElementById('contactForm').reset();
+        });
+
+        // ========================================== //
+        // ฟังก์ชันใหม่: ปุ่ม Go to Top และ Visitor Counter
+        // ========================================== //
+
+        // 4. ระบบปุ่ม Go to Top 
+        const topBtn = document.getElementById("goToTopBtn");
+
+        // ตรวจจับการเลื่อนจอ ถ้าเลื่อนลงมาเกิน 100px ให้โชว์ปุ่ม
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 100) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        });
+
+        // เมื่อคลิกปุ่ม ให้สกอร์บาร์เลื่อนขึ้นไปบนสุดแบบนุ่มนวล
+        topBtn.addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // 5. ระบบนับจำนวนคนเข้าชม (Visitor Counter) โดยใช้ LocalStorage
+        window.addEventListener('load', function() {
+            // ดึงค่าจำนวนคนเข้าชมเดิมที่บันทึกไว้ในเบราว์เซอร์
+            let count = localStorage.getItem('siteVisitors');
+            
+            if (count === null) {
+                count = 1; // ถ้ายังไม่เคยเข้าเลย ให้เริ่มที่ 1
+            } else {
+                count = parseInt(count) + 1; // ถ้าเคยเข้าแล้ว ให้บวกเพิ่มอีก 1
+            }
+            
+            // บันทึกค่าใหม่ลงไป
+            localStorage.setItem('siteVisitors', count);
+            
+            // นำตัวเลขไปแสดงผลบนหน้าเว็บ (เมนูซ้ายล่าง)
+            document.getElementById('visitorCountDisplay').innerText = count;
+        });
+
     </script>
 </body>
 </html>
