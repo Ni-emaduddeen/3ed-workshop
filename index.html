@@ -7,11 +7,14 @@
     <meta name="description" content="Professional CV and Portfolio of Ni-emaduddeen Bennisoh">
     <title>Ni-emaduddeen - Interactive Resume</title>
     
+    <!-- เชื่อมต่อไฟล์ CSS สำหรับตกแต่งหน้าเว็บ -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Intro Video -->
+    <!-- ========================================== -->
+    <!-- Intro Video แบบเต็มจอ (เล่นอัตโนมัติ) -->
+    <!-- ========================================== -->
     <div id="video-intro">
         <video id="intro-clip" autoplay muted playsinline>
             <source src="intro.mp4" type="video/mp4">
@@ -19,7 +22,9 @@
         </video>
     </div>
 
-    <!-- โครงสร้างหลักของเว็บ -->
+    <!-- ========================================== -->
+    <!-- โครงสร้างหลักของเว็บ (เมนูซ้าย + เนื้อหาขวา) -->
+    <!-- ========================================== -->
     <div class="page-layout">
         
         <!-- แถบเมนูด้านซ้าย -->
@@ -29,6 +34,7 @@
             </div>
             <h3 class="sidebar-name">Ni-emaduddeen</h3>
             
+            <!-- เมนูนำทาง -->
             <ul class="nav-links">
                 <li><a href="#" class="nav-btn active-btn" onclick="showSection('header', this)">Profile Info</a></li>
                 <li><a href="#" class="nav-btn" onclick="showSection('education', this)">Education</a></li>
@@ -43,7 +49,7 @@
                 <li><a href="#" class="nav-btn" onclick="showSection('contact', this)">Contact</a></li>
             </ul>
 
-            <!-- เพิ่มส่วนแสดงผลตัวนับคนเข้าชมเว็บ (Visitor Counter) ตรงนี้ -->
+            <!-- ส่วนแสดงผลตัวนับคนเข้าชมเว็บ (Visitor Counter) -->
             <div class="visitor-stats">
                 👀 Total Visitors: <span id="visitorCountDisplay">0</span>
             </div>
@@ -52,14 +58,33 @@
         <!-- พื้นที่เนื้อหาด้านขวา -->
         <div class="resume-container">
             
-            <header id="header" class="resume-header fade-in content-section active">
+          <header id="header" class="resume-header fade-in content-section active">
                 <div class="header-text">
                     <h1 class="header-name">[Ni-emaduddeen Bennisoh]</h1>
                     <h2 class="header-title">Information Technology Student</h2>
-                    <p class="header-summary">
-                        Passionate IT student with a strong focus on Data Analytics, Network Design, and System Analysis. 
-                        Eager to apply technical skills in real-world technology solutions.
-                    </p>
+                    
+                    <div class="profile-details" style="text-align: left; margin-top: 25px; padding: 0 15px;">
+                        
+                        <h3 style="color: #2980b9; margin-bottom: 10px; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px;">👤 About Me</h3>
+                        <p style="line-height: 1.6; margin-bottom: 20px;">
+                            Passionate IT student specializing in System Analysis, Data Analytics, and Network Design. I have a strong foundation in designing network infrastructure and processing complex datasets. Beyond academics, I am a competitive football player, which has instilled in me strong teamwork, discipline, and strategic thinking. I am also a tech enthusiast who constantly explores emerging technologies, from cloud gaming platforms like GeForce Now to utilizing AI image generation for creative multimedia projects.
+                        </p>
+
+                        <h3 style="color: #2980b9; margin-bottom: 10px; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px;">🎯 Career Objective</h3>
+                        <p style="line-height: 1.6; margin-bottom: 20px;">
+                            Eager to apply my technical skills in Python data processing (Pandas/Google Colab) and enterprise network topology design to solve real-world challenges. I am seeking opportunities to contribute to innovative tech solutions while continuously expanding my expertise in the IT industry.
+                        </p>
+
+                        <h3 style="color: #2980b9; margin-bottom: 10px; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px;">💡 Core Competencies</h3>
+                        <ul style="line-height: 1.8; margin-bottom: 20px; padding-left: 20px;">
+                            <li><strong>Data Analysis & Processing:</strong> Cleaning, transforming, and extracting insights from datasets using Python.</li>
+                            <li><strong>Network Architecture:</strong> Designing and documenting hardware specifications and network layouts.</li>
+                            <li><strong>System Optimization:</strong> Configuring hardware and software for maximum performance and efficiency.</li>
+                            <li><strong>Creative Technology:</strong> Integrating AI-generated visual aids into professional presentations (e.g., OSI Model).</li>
+                            <li><strong>Soft Skills:</strong> Effective team collaboration, strategic planning, and performing under pressure in competitive environments.</li>
+                        </ul>
+
+                    </div>
                 </div>
             </header>
 
@@ -251,113 +276,11 @@
         </div> 
     </div> 
 
-    <!-- ปุ่ม Go to Top (เพิ่มเข้ามาใหม่) -->
+    <!-- ปุ่ม Go to Top -->
     <button id="goToTopBtn" title="Go to top">⬆️</button>
 
-    <!-- ========================================== -->
-    <!-- ระบบ JavaScript (อัปเดตใหม่) -->
-    <!-- ========================================== -->
-    <script>
-        // 1. ระบบจัดการ Intro Video
-        window.addEventListener('load', function() {
-            const introContainer = document.getElementById('video-intro');
-            const introVideo = document.getElementById('intro-clip');
+    <!-- เรียกใช้งานไฟล์ JavaScript ภายนอกที่เพิ่งสร้าง -->
+    <script src="script.js"></script>
 
-            if (introContainer && introVideo) {
-                introVideo.addEventListener('ended', function() {
-                    introContainer.style.opacity = '0'; 
-                    setTimeout(function() {
-                        introContainer.remove(); 
-                    }, 800); 
-                });
-
-                setTimeout(function() {
-                    if (document.getElementById('video-intro')) {
-                        introContainer.style.opacity = '0';
-                        setTimeout(() => introContainer.remove(), 800);
-                    }
-                }, 5000); 
-            }
-        });
-
-        // 2. ระบบควบคุมการกดเมนูแท็บด้านซ้าย
-        function showSection(sectionId, clickedElement) {
-            document.querySelectorAll('.content-section').forEach(function(sec) {
-                sec.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-
-            document.querySelectorAll('.nav-btn').forEach(function(btn) {
-                btn.classList.remove('active-btn');
-            });
-            clickedElement.classList.add('active-btn');
-        }
-
-        // 3. ระบบจัดการฟอร์มติดต่อ
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            let rawName = document.getElementById('name').value;
-            let rawEmail = document.getElementById('email').value;
-            let rawMessage = document.getElementById('message').value;
-
-            function sanitizeInput(inputStr) {
-                const tempDiv = document.createElement('div');
-                tempDiv.textContent = inputStr;
-                return tempDiv.innerHTML;
-            }
-
-            let cleanName = sanitizeInput(rawName);
-            let cleanEmail = sanitizeInput(rawEmail);
-            let cleanMessage = sanitizeInput(rawMessage);
-
-            const contactData = { name: cleanName, email: cleanEmail, message: cleanMessage };
-            console.log("Sanitized Data Saved:", contactData);
-
-            let feedbackElement = document.getElementById('formFeedback');
-            feedbackElement.style.color = "#28a745"; 
-            feedbackElement.innerHTML = `Thank you, ${contactData.name}! Your message has been safely received.`;
-            document.getElementById('contactForm').reset();
-        });
-
-        // ========================================== //
-        // ฟังก์ชันใหม่: ปุ่ม Go to Top และ Visitor Counter
-        // ========================================== //
-
-        // 4. ระบบปุ่ม Go to Top 
-        const topBtn = document.getElementById("goToTopBtn");
-
-        // ตรวจจับการเลื่อนจอ ถ้าเลื่อนลงมาเกิน 100px ให้โชว์ปุ่ม
-        window.addEventListener("scroll", function() {
-            if (window.scrollY > 100) {
-                topBtn.style.display = "block";
-            } else {
-                topBtn.style.display = "none";
-            }
-        });
-
-        // เมื่อคลิกปุ่ม ให้สกอร์บาร์เลื่อนขึ้นไปบนสุดแบบนุ่มนวล
-        topBtn.addEventListener("click", function() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-        // 5. ระบบนับจำนวนคนเข้าชม (Visitor Counter) โดยใช้ LocalStorage
-        window.addEventListener('load', function() {
-            // ดึงค่าจำนวนคนเข้าชมเดิมที่บันทึกไว้ในเบราว์เซอร์
-            let count = localStorage.getItem('siteVisitors');
-            
-            if (count === null) {
-                count = 1; // ถ้ายังไม่เคยเข้าเลย ให้เริ่มที่ 1
-            } else {
-                count = parseInt(count) + 1; // ถ้าเคยเข้าแล้ว ให้บวกเพิ่มอีก 1
-            }
-            
-            // บันทึกค่าใหม่ลงไป
-            localStorage.setItem('siteVisitors', count);
-            
-            // นำตัวเลขไปแสดงผลบนหน้าเว็บ (เมนูซ้ายล่าง)
-            document.getElementById('visitorCountDisplay').innerText = count;
-        });
-
-    </script>
 </body>
 </html>
