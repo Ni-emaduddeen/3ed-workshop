@@ -1,4 +1,71 @@
-// 1. ระบบจัดการ Intro Video
+// ==========================================
+// 1. ตั้งค่าเริ่มต้นเมื่อโหลดหน้าเว็บ (แก้ปัญหาเนื้อหาโผล่มาพร้อมกันหมด)
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // บังคับซ่อนทุกหมวดหมู่ และแสดงแค่หน้า Profile Info เป็นหน้าแรก
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(sec => {
+        sec.style.display = 'none';
+    });
+    const firstSection = document.getElementById('header');
+    if (firstSection) {
+        firstSection.style.display = 'block';
+    }
+
+    // ระบบนับจำนวนคนเข้าชม (Visitor Counter)
+    let count = localStorage.getItem('siteVisitors');
+    if (count === null) {
+        count = 1; 
+    } else {
+        count = parseInt(count) + 1; 
+    }
+    localStorage.setItem('siteVisitors', count);
+    let visitorDisplay = document.getElementById('visitorCountDisplay');
+    if(visitorDisplay) {
+        visitorDisplay.innerText = count;
+    }
+});
+
+// ==========================================
+// 2. ฟังก์ชันสลับหน้าต่าง (ระบบกดเมนู)
+// ==========================================
+function showSection(sectionId, btn) {
+    // ซ่อนเนื้อหาทุกหมวดหมู่ก่อน
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(sec => {
+        sec.style.display = 'none';
+    });
+
+    // แสดงเฉพาะเนื้อหาที่ตรงกับเมนูที่กด
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+        activeSection.style.display = 'block';
+    }
+
+    // ลบแถบสีแดง (Active) ออกจากปุ่มเมนูทั้งหมด
+    const buttons = document.querySelectorAll('.nav-btn');
+    buttons.forEach(b => {
+        b.classList.remove('active-btn');
+    });
+
+    // ใส่แถบสีแดง ให้กับปุ่มที่เพิ่งถูกกด
+    if (btn) {
+        btn.classList.add('active-btn');
+    }
+    
+    // [เพิ่มพิเศษ] ถ้าเปิดบนมือถือ/หน้าจอเล็ก พอกดเลือกเมนูเสร็จ ให้เก็บเมนูอัตโนมัติ
+    const sidebar = document.querySelector('.sidebar');
+    const resumeContainer = document.querySelector('.resume-container');
+    if (window.innerWidth <= 1024 && sidebar) {
+        sidebar.classList.remove('active');
+        if (resumeContainer) resumeContainer.classList.remove('active');
+    }
+}
+
+// ==========================================
+// 3. ระบบจัดการ Intro Video
+// ==========================================
 window.addEventListener('load', function() {
     const introContainer = document.getElementById('video-intro');
     const introVideo = document.getElementById('intro-clip');
@@ -11,6 +78,7 @@ window.addEventListener('load', function() {
             }, 800); 
         });
 
+        // ตั้งเวลาสำรองเผื่อวิดีโอมีปัญหา ให้ลบตัวเองทิ้งหลังผ่านไป 5 วินาที
         setTimeout(function() {
             if (document.getElementById('video-intro')) {
                 introContainer.style.opacity = '0';
@@ -20,81 +88,78 @@ window.addEventListener('load', function() {
     }
 });
 
-// 2. ระบบควบคุมการกดเมนูแท็บด้านซ้าย
-function showSection(sectionId, clickedElement) {
-    document.querySelectorAll('.content-section').forEach(function(sec) {
-        sec.classList.remove('active');
-    });
-    document.getElementById(sectionId).classList.add('active');
+// ==========================================
+// 4. ระบบปุ่มแฮมเบอร์เกอร์
+// ==========================================
+const mobileMenu = document.getElementById('mobile-menu');
+const sidebar = document.querySelector('.sidebar');
+const resumeContainer = document.querySelector('.resume-container');
 
-    document.querySelectorAll('.nav-btn').forEach(function(btn) {
-        btn.classList.remove('active-btn');
+if (mobileMenu && sidebar) {
+    mobileMenu.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        if (resumeContainer) {
+            resumeContainer.classList.toggle('active');
+        }
     });
-    clickedElement.classList.add('active-btn');
 }
 
-// 3. ระบบจัดการฟอร์มติดต่อ
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    let rawName = document.getElementById('name').value;
-    let rawEmail = document.getElementById('email').value;
-    let rawMessage = document.getElementById('message').value;
-
-    function sanitizeInput(inputStr) {
-        const tempDiv = document.createElement('div');
-        tempDiv.textContent = inputStr;
-        return tempDiv.innerHTML;
-    }
-
-    let cleanName = sanitizeInput(rawName);
-    let cleanEmail = sanitizeInput(rawEmail);
-    let cleanMessage = sanitizeInput(rawMessage);
-
-    const contactData = { name: cleanName, email: cleanEmail, message: cleanMessage };
-    console.log("Sanitized Data Saved:", contactData);
-
-    let feedbackElement = document.getElementById('formFeedback');
-    feedbackElement.style.color = "#28a745"; 
-    feedbackElement.innerHTML = `Thank you, ${contactData.name}! Your message has been safely received.`;
-    document.getElementById('contactForm').reset();
-});
-
-// 4. ระบบปุ่ม Go to Top (อัปเดตให้รองรับกรอบเนื้อหาด้านขวา)
+// ==========================================
+// 5. ระบบปุ่ม Go to Top 
+// ==========================================
 const topBtn = document.getElementById("goToTopBtn");
-const scrollContainer = document.querySelector('.resume-container'); // อ้างอิงกรอบเนื้อหาด้านขวา
+const scrollContainer = document.querySelector('.resume-container'); 
 
-// สร้างฟังก์ชันเช็คระยะการเลื่อน
 function checkScroll() {
-    // เช็คว่าเลื่อนหน้าต่างหลัก หรือ เลื่อนกรอบด้านขวา ลงมาเกิน 50px หรือยัง
     if (window.scrollY > 50 || (scrollContainer && scrollContainer.scrollTop > 50)) {
-        topBtn.style.display = "block";
+        if(topBtn) topBtn.style.display = "block";
     } else {
-        topBtn.style.display = "none";
+        if(topBtn) topBtn.style.display = "none";
     }
 }
 
-// สั่งให้คอยดักจับเมื่อมีการเลื่อน (Scroll)
 window.addEventListener("scroll", checkScroll);
 if (scrollContainer) {
     scrollContainer.addEventListener("scroll", checkScroll);
 }
 
-// เมื่อกดปุ่ม ให้สกอร์บาร์เลื่อนขึ้นไปบนสุดแบบนุ่มนวล
-topBtn.addEventListener("click", function() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: "smooth" });
-});
+if(topBtn) {
+    topBtn.addEventListener("click", function() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+    });
+}
 
-// 5. ระบบนับจำนวนคนเข้าชม (Visitor Counter) โดยใช้ LocalStorage
-window.addEventListener('load', function() {
-    let count = localStorage.getItem('siteVisitors');
-    
-    if (count === null) {
-        count = 1; 
-    } else {
-        count = parseInt(count) + 1; 
-    }
-    
-    localStorage.setItem('siteVisitors', count);
-    document.getElementById('visitorCountDisplay').innerText = count;
-});
+// ==========================================
+// 6. ระบบจัดการฟอร์มติดต่อ
+// ==========================================
+const contactForm = document.getElementById('contactForm');
+if(contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        let rawName = document.getElementById('name').value;
+        let rawEmail = document.getElementById('email').value;
+        let rawMessage = document.getElementById('message').value;
+
+        // ป้องกันสแปมและโค้ดอันตราย
+        function sanitizeInput(inputStr) {
+            const tempDiv = document.createElement('div');
+            tempDiv.textContent = inputStr;
+            return tempDiv.innerHTML;
+        }
+
+        let cleanName = sanitizeInput(rawName);
+        let cleanEmail = sanitizeInput(rawEmail);
+        let cleanMessage = sanitizeInput(rawMessage);
+
+        const contactData = { name: cleanName, email: cleanEmail, message: cleanMessage };
+        
+        // แสดงข้อความตอบกลับ
+        let feedbackElement = document.getElementById('formFeedback');
+        if(feedbackElement) {
+            feedbackElement.style.color = "#28a745"; 
+            feedbackElement.innerHTML = `Thank you, ${contactData.name}! Your message has been safely received.`;
+        }
+        contactForm.reset();
+    });
+}
