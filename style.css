@@ -1,23 +1,25 @@
-/* --- Global Styles --- */
+/* ========================================= */
+/* --- 1. Global Styles & Reset --- */
+/* ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
     scroll-behavior: smooth; 
-}
-
-body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f9; /* พื้นหลังสีเทาอ่อนให้กล่องตรงกลางเด่นขึ้น */
+    background-color: #f4f6f9;
     color: #333;
     line-height: 1.6;
 }
 
 /* ========================================= */
-/* --- เอฟเฟกต์ Intro Video เต็มจอ --- */
+/* --- 2. เอฟเฟกต์ Intro Video เต็มจอ --- */
 /* ========================================= */
 #video-intro {
     position: fixed;
@@ -40,38 +42,89 @@ body {
 }
 
 /* ========================================= */
-/* --- โครงสร้างเลย์เอาต์ (Sidebar + Content) --- */
+/* --- 3. โครงสร้างเลย์เอาต์ (Sidebar + Content) --- */
 /* ========================================= */
 .page-layout {
     display: flex;
     min-height: 100vh;
 }
 
-/* ตกแต่งแถบเมนูด้านซ้าย (ธีมสีดำ) */
-.sidebar {
-    width: 250px;
-    background-color: #111111; /* สีดำแบบชุดเยือน */
-    color: #ffffff;
-    padding: 40px 20px;
-    position: fixed; 
-    height: 100vh;
-    overflow-y: auto;
+/* ปุ่มแฮมเบอร์เกอร์สีแดง (สำหรับมือถือ) */
+.menu-toggle {
+    display: block !important; 
+    background-color: #e74c3c;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 9999 !important;
     text-align: center;
-    border-right: 3px solid #DA291C; /* เส้นขอบขวาสีแดง */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* รูปโปรไฟล์เมนูด้านซ้าย */
+/* ตกแต่งแถบเมนูด้านซ้าย (ธีมสีดำ) */
+.sidebar {
+    position: fixed !important;
+    left: -300px !important; /* ค่าเริ่มต้นซ่อนหลบซ้าย */
+    top: 54px !important;
+    width: 280px !important;
+    height: calc(100vh - 54px) !important;
+    background-color: #111111 !important; 
+    color: #ffffff;
+    padding: 40px 20px;
+    overflow-y: auto !important;
+    text-align: center;
+    border-right: 3px solid #DA291C;
+    z-index: 9998 !important;
+    transition: left 0.4s ease-in-out !important;
+}
+
+/* คลาสที่เปิดเมนูออกมา */
+.sidebar.active {
+    left: 0 !important;
+}
+
+/* ตกแต่งพื้นที่เนื้อหาด้านขวา */
+.resume-container {
+    margin-left: 0 !important; 
+    width: 100% !important;
+    padding: 80px 5% 40px 5% !important;
+    background-color: #ffffff !important; 
+    min-height: 100vh !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    transition: margin-left 0.4s ease-in-out, width 0.4s ease-in-out !important;
+    border-top: 8px solid #DA291C; /* แถบสีแดงด้านบน */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* ระบบ Responsive: ดันเนื้อหาเมื่อเปิดเมนูบนจอใหญ่ */
+@media screen and (min-width: 1025px) {
+    .resume-container.active {
+        margin-left: 280px !important;
+        width: calc(100% - 280px) !important;
+    }
+}
+
+/* ========================================= */
+/* --- 4. Sidebar Elements --- */
+/* ========================================= */
 .sidebar-profile {
     width: 100px;
     height: 100px;
-    background: linear-gradient(135deg, #DA291C, #111111); /* ไล่สีแดง-ดำ */
+    background: linear-gradient(135deg, #DA291C, #111111); 
     border-radius: 50%;
     margin: 0 auto 15px auto;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    border: 3px solid #FFE500; /* ขอบสีทองแมนยู */
+    border: 3px solid #FFE500;
 }
 
 .sidebar-name {
@@ -102,45 +155,42 @@ body {
     border-left: 4px solid transparent;
 }
 
-/* ปุ่มเมนูเวลาเอาเมาส์ชี้และปุ่มที่กำลังใช้งาน (ธีมสีแดงแมนยู) */
 .nav-links a:hover, .nav-links a.active-btn {
-    background-color: #DA291C; /* แดงแมนยู */
+    background-color: #DA291C;
     color: #ffffff;
     padding-left: 20px; 
-    border-left: 4px solid #FFE500; /* แถบสีทองด้านซ้าย */
+    border-left: 4px solid #FFE500;
     font-weight: bold;
 }
 
+.visitor-stats {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #333333;
+    color: #FFE500;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-align: center;
+}
+
 /* ========================================= */
-/* --- ระบบแสดงทีละหน้า (Tab Navigation) --- */
+/* --- 5. ระบบซ่อน/แสดงทีละหน้า (Tab Nav) --- */
 /* ========================================= */
 .content-section {
     display: none; 
+    animation: fadeIn 0.4s ease-in-out;
 }
 
-.content-section.active {
-    display: block; 
-}
-
-/* ตกแต่งพื้นที่เนื้อหาด้านขวา (กล่องขาวตรงกลาง) */
-.resume-container {
-    flex: 1;
-    margin-left: 250px; 
-    max-width: 900px;
-    background-color: #ffffff; /* คงสีขาวไว้ให้อ่านง่าย */
-    padding: 50px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    border-top: 8px solid #DA291C; /* แถบสีแดงหนาด้านบนกล่อง */
-}
-
-/* --- Typography Classes --- */
 .resume-section {
     padding-top: 20px; 
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Typography --- */
 .resume-header {
     text-align: left;
     border-bottom: 2px dashed #fcebeb;
@@ -149,7 +199,7 @@ body {
 }
 
 .header-name {
-    color: #DA291C; /* ชื่อสีแดง */
+    color: #DA291C;
     font-size: 2.6em;
     margin-bottom: 5px;
     font-weight: 800;
@@ -163,12 +213,12 @@ body {
 }
 
 .section-title {
-    color: #DA291C; /* หัวข้อสีแดง */
+    color: #DA291C;
     font-size: 1.6em;
     border-bottom: 2px solid #DA291C;
     padding-bottom: 8px;
     margin-bottom: 20px;
-    display: inline-block; /* ให้เส้นใต้พอดีกับตัวอักษร */
+    display: inline-block;
 }
 
 .highlight-text {
@@ -177,7 +227,7 @@ body {
     font-weight: bold;
 }
 
-/* --- Timeline Classes (จุดและเส้นสีแดง) --- */
+/* --- Timeline --- */
 .timeline {
     border-left: 3px solid #DA291C;
     margin-left: 20px;
@@ -203,7 +253,7 @@ body {
 
 .timeline-date {
     display: inline-block;
-    background-color: #FFE500; /* ป้ายปีสีทอง */
+    background-color: #FFE500;
     color: #111111;
     padding: 3px 12px;
     border-radius: 15px;
@@ -212,37 +262,24 @@ body {
     margin-left: 10px;
 }
 
-/* --- List & Table Classes --- */
-.content-list {
-    margin-left: 20px;
-}
-
-.content-list li {
-    margin-bottom: 15px;
-}
+/* --- Lists & Tables --- */
+.content-list { margin-left: 20px; }
+.content-list li { margin-bottom: 15px; }
 
 .tech-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
 }
-
 .tech-table th, .tech-table td {
     border: 1px solid #e0e0e0;
     padding: 12px;
     text-align: left;
 }
+.tech-table th { background-color: #DA291C; color: white; }
+.tech-table tr:nth-child(even) { background-color: #fcfcfc; }
 
-.tech-table th {
-    background-color: #DA291C; /* หัวตารางสีแดง */
-    color: white;
-}
-
-.tech-table tr:nth-child(even) {
-    background-color: #fcfcfc;
-}
-
-/* --- Card & Grid Classes --- */
+/* --- Cards & Grids --- */
 .project-grid, .hobbies-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -266,18 +303,15 @@ body {
     border-left: 4px solid #DA291C;
 }
 
-.grid-card {
-    border-top: 4px solid #DA291C;
-}
-
+.grid-card { border-top: 4px solid #DA291C; }
 .project-card:hover, .grid-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(218, 41, 28, 0.15); /* เงาสีแดงอ่อนๆ */
+    box-shadow: 0 8px 20px rgba(218, 41, 28, 0.15);
 }
 
 .project-icon {
     font-size: 2em;
-    background-color: #fcebeb; /* พื้นหลังไอคอนสีแดงอ่อน */
+    background-color: #fcebeb;
     padding: 10px;
     border-radius: 8px;
     flex-shrink: 0;
@@ -292,10 +326,7 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     transition: transform 0.3s ease;
 }
-
-.achievement-card:hover {
-    transform: translateX(8px);
-}
+.achievement-card:hover { transform: translateX(8px); }
 
 /* --- Skills Progress --- */
 .skills-wrapper {
@@ -304,7 +335,6 @@ body {
     border-radius: 8px;
     border: 1px solid #f0f0f0;
 }
-
 .skill-info {
     display: flex;
     justify-content: space-between;
@@ -312,7 +342,6 @@ body {
     font-weight: bold;
     color: #111111;
 }
-
 .progress-bar-bg {
     width: 100%;
     background-color: #e0e0e0;
@@ -320,35 +349,31 @@ body {
     height: 12px;
     margin-bottom: 15px;
 }
-
 .progress-bar-fill {
-    background-color: #DA291C; /* หลอดพลังสีแดง */
+    background-color: #DA291C;
     height: 100%;
     border-radius: 10px;
 }
 
-/* --- Form Classes --- */
+/* --- Forms --- */
 .contact-form {
     background-color: #fafafa;
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #f0f0f0;
 }
-
 .form-flex-group {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 10px;
 }
-
 .form-control {
     flex: 1;
     min-width: 200px;
     display: flex;
     flex-direction: column;
 }
-
 .form-input, .form-textarea {
     width: 100%;
     padding: 10px;
@@ -357,10 +382,9 @@ body {
     border-radius: 5px;
     font-family: inherit;
 }
-
 .btn-submit {
     margin-top: 15px;
-    background-color: #111111; /* ปุ่มกดสีดำ */
+    background-color: #111111;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -369,32 +393,20 @@ body {
     font-weight: bold;
     transition: background-color 0.3s ease;
 }
+.btn-submit:hover { background-color: #DA291C; }
 
-.btn-submit:hover {
-    background-color: #DA291C; /* ชี้แล้วเปลี่ยนเป็นสีแดง */
-}
-
-/* --- Animations --- */
-@keyframes fadeInMove {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-    animation: fadeInMove 0.8s ease-out forwards;
-}
 /* ========================================= */
-/* --- Go to Top Button --- */
+/* --- 6. Go to Top Button --- */
 /* ========================================= */
 #goToTopBtn {
-    display: none; /* ซ่อนไว้ก่อน จะโชว์ตอนเลื่อนจอ */
+    display: none; 
     position: fixed;
     bottom: 30px;
     right: 30px;
     z-index: 999;
     font-size: 20px;
     border: none;
-    background-color: #DA291C; /* สีแดงแมนยู */
+    background-color: #DA291C;
     color: white;
     cursor: pointer;
     padding: 15px 18px;
@@ -402,111 +414,83 @@ body {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
 }
-
 #goToTopBtn:hover {
-    background-color: #111111; /* เปลี่ยนเป็นสีดำเมื่อเอาเมาส์ชี้ */
+    background-color: #111111;
     transform: translateY(-5px);
 }
 
 /* ========================================= */
-/* --- Visitor Counter --- */
+/* --- 7. ระบบ Slideshow (Gallery) --- */
 /* ========================================= */
-.visitor-stats {
-    margin-top: 30px;
-    padding-top: 15px;
-    border-top: 1px solid #333333;
-    color: #FFE500; /* สีทองแมนยู */
-    font-weight: bold;
-    font-size: 0.9em;
-    text-align: center;
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 3px solid #111111;
 }
-
-
-/* จัดกรอบเนื้อหาฝั่งขวาบนจอคอมพิวเตอร์ ไม่ให้ซ้อนทับแถบเมนูด้านซ้าย */
-.resume-container,
-main {
-    margin-left: 300px !important; /* ดันเนื้อหาหลบแถบเมนูด้านซ้าย (สมมติว่าเมนูกว้าง 300px) */
-    width: calc(100% - 300px) !important;
-    padding: 40px 5% !important;
-    box-sizing: border-box !important;
+.mySlides { display: none; }
+.mySlides img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
 }
-
-
-
-body, html {
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow-x: hidden !important; 
-}
-
-/* 1. ปุ่มแฮมเบอร์เกอร์สีแดง */
-.menu-toggle {
-    display: block !important; 
-    background-color: #e74c3c;
-    color: white;
-    padding: 15px;
-    font-size: 20px;
+.prev-slide, .next-slide {
     cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
     font-weight: bold;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    z-index: 9999 !important;
+    font-size: 24px;
+    transition: background-color 0.4s ease;
+    border-radius: 0 5px 5px 0;
+    user-select: none;
+    background-color: rgba(17, 17, 17, 0.4);
+}
+.next-slide {
+    right: 0;
+    border-radius: 5px 0 0 5px;
+}
+.prev-slide:hover, .next-slide:hover {
+    background-color: #DA291C;
+}
+.slide-text {
+    color: #ffffff;
+    font-size: 1em;
+    padding: 12px 15px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background-color: rgba(17, 17, 17, 0.8);
+    font-weight: bold;
+    border-top: 2px solid #DA291C;
 }
-
-/* 2. เมนูสีดำด้านซ้าย (เริ่มต้นให้ซ่อนไว้ก่อน) */
-.sidebar {
-    position: fixed !important;
-    left: -300px !important; /* ซ่อนหลบไปทางซ้าย */
-    top: 54px !important; /* อยู่ใต้ปุ่มแดง */
-    width: 280px !important;
-    height: calc(100vh - 54px) !important;
-    background-color: #111 !important; 
-    z-index: 9998 !important;
-    overflow-y: auto !important;
-    transition: left 0.4s ease-in-out !important; /* เอฟเฟกต์ตอนเลื่อน */
+.slide-dot {
+    cursor: pointer;
+    height: 14px;
+    width: 14px;
+    margin: 0 5px;
+    background-color: #cccccc;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.4s ease;
 }
-
-/* คลาสที่จะดึงเมนูออกมาตอนกดปุ่ม */
-.sidebar.active {
-    left: 0 !important;
+.slide-dot.active-dot, .slide-dot:hover {
+    background-color: #DA291C;
+    box-shadow: 0 0 5px rgba(218, 41, 28, 0.5);
 }
-
-/* 3. กล่องเนื้อหา (เริ่มต้นให้แสดงเต็มจอ) */
-.resume-container {
-    margin-left: 0 !important; 
-    width: 100% !important;
-    padding: 80px 5% 40px 5% !important;
-    background-color: #ffffff !important; 
-    min-height: 100vh !important;
-    display: block !important;
-    box-sizing: border-box !important;
-    transition: margin-left 0.4s ease-in-out, width 0.4s ease-in-out !important;
+.fade-slide {
+    animation-name: fadeAnimation;
+    animation-duration: 0.8s;
 }
-
-/* ดันเนื้อหาหลบไปขวา 280px เมื่อกดเปิดเมนู (เฉพาะบนจอคอมพิวเตอร์) */
-@media screen and (min-width: 1025px) {
-    .resume-container.active {
-        margin-left: 280px !important;
-        width: calc(100% - 280px) !important;
-    }
-}
-
-/* ========================================== */
-/* ระบบซ่อน/แสดงเนื้อหาตามเมนูที่กด */
-/* ========================================== */
-
-/* ซ่อนเนื้อหาทุกหมวดหมู่ไว้ก่อนเป็นค่าเริ่มต้น */
-.content-section {
-    display: none; 
-    animation: fadeIn 0.4s ease-in-out;
-}
-
-/* เอฟเฟกต์ค่อยๆ ปรากฏตอนเปลี่ยนหน้า */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes fadeAnimation {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
 }
