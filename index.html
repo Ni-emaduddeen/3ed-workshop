@@ -32,9 +32,8 @@
             ☰ Menu
         </div>
 
-        <!-- แถบเมนูด้านซ้าย (ของเดิม) -->
-        <nav class="sidebar">
         <!-- แถบเมนูด้านซ้าย -->
+        <nav class="sidebar">
             <div class="sidebar-profile">
                 <span>👨‍💻</span>
             </div>
@@ -183,7 +182,7 @@
                 </div>
             </section>
 
-            <section id="projects" class="resume-section fade-in content-section">
+           <section id="projects" class="resume-section fade-in content-section">
                 <h3 class="section-title">📂 Academic Projects</h3>
                 <div class="project-grid">
                     <div class="project-card">
@@ -220,6 +219,44 @@
                         <p>Avid PC gamer using GeForce Now for hardware-intensive titles.</p>
                     </div>
                 </div>
+
+                <!-- Gallery Slideshow สำหรับ Hobbies & Interests -->
+                <h3 class="section-title" style="margin-top: 35px;">📸 My Moments & Hobbies Gallery</h3>
+                
+                <div class="slideshow-container">
+                    <!-- สไลด์ที่ 1: การแข่งขันฟุตบอล -->
+                    <div class="mySlides fade-slide">
+                        <!-- เปลี่ยน football-tournament.jpg เป็นชื่อไฟล์รูปของคุณ -->
+                        <img src="football-tournament.jpg" alt="Football Tournament">
+                        <div class="slide-text">⚽ Competitive Football Match & Tournament</div>
+                    </div>
+
+                    <!-- สไลด์ที่ 2: อุปกรณ์กีฬา / รองเท้าฟุตบอล -->
+                    <div class="mySlides fade-slide">
+                        <!-- เปลี่ยน mizuno-gear.jpg เป็นชื่อไฟล์รูปของคุณ -->
+                        <img src="mizuno-gear.jpg" alt="Football Gear">
+                        <div class="slide-text">👟 Match Day Gear & Turf Boots</div>
+                    </div>
+
+                    <!-- สไลด์ที่ 3: เกมมิ่ง / GeForce Now -->
+                    <div class="mySlides fade-slide">
+                        <!-- เปลี่ยน cloud-gaming.jpg เป็นชื่อไฟล์รูปของคุณ -->
+                        <img src="cloud-gaming.jpg" alt="Cloud Gaming Experience">
+                        <div class="slide-text">🎮 PC Gaming via GeForce Now on Laptop</div>
+                    </div>
+
+                    <!-- ปุ่มเลื่อนซ้าย-ขวา -->
+                    <a class="prev-slide" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next-slide" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+
+                <!-- จุดไข่ปลา (Dots) สำหรับบอกตำแหน่งสไลด์ปัจจุบัน -->
+                <div style="text-align:center; margin-top: 15px;">
+                    <span class="slide-dot" onclick="currentSlide(1)"></span>
+                    <span class="slide-dot" onclick="currentSlide(2)"></span>
+                    <span class="slide-dot" onclick="currentSlide(3)"></span>
+                </div>
+
             </section>
 
             <section id="soft-skills" class="resume-section fade-in content-section">
