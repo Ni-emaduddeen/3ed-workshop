@@ -163,3 +163,54 @@ if(contactForm) {
         contactForm.reset();
     });
 }
+
+// ==========================================
+// 7. ระบบ Slideshow (Gallery)
+// ==========================================
+let slideIndex = 1;
+
+// ฟังก์ชันสำหรับสลับสไลด์ไปข้างหน้าหรือถอยหลัง
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+// ฟังก์ชันสำหรับกระโดดไปสไลด์ที่กดตรงจุดไข่ปลา
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+// กลไกหลักในการเปลี่ยนรูปและสลับสถานะจุดไข่ปลา
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("slide-dot");
+    
+    // ถ้าหน้าเว็บยังโหลด Slideshow ไม่ขึ้น ให้ข้ามไปก่อน
+    if (slides.length === 0) return;
+
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
+    
+    // ซ่อนทุกรูป
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    // ลบสีแดงออกจากทุกจุด
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    
+    // แสดงรูปปัจจุบันและเติมสีแดงที่จุดนั้น
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active-dot";
+}
+
+// เพื่อให้มั่นใจว่าเมื่อกดเข้าหมวดหมู่ "Projects" แล้วสไลด์จะแสดงผลถูกต้อง
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        // หน่วงเวลาเล็กน้อยให้หน้า Projects โชว์ขึ้นมาก่อนค่อยรันสไลด์แรก
+        setTimeout(() => {
+            showSlides(slideIndex);
+        }, 50);
+    });
+});
